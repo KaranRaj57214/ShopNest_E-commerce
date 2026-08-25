@@ -1,5 +1,4 @@
 import React from 'react';
-
 const About = () => {
   const containerStyle = {
     maxWidth: '900px',
@@ -28,25 +27,17 @@ const About = () => {
     <div style={containerStyle}>
       <img
         src="/dp.jpg"
-        alt="@theshivanshvasu"
+        alt="Karan Raj"
         style={{ width: '180px', height: '180px', borderRadius: '50%', objectFit: 'cover', border: '4px solid #f97316', marginBottom: '20px', boxShadow: '0 4px 20px rgba(249, 115, 22, 0.4)' }}
       />
       <h2 style={{ fontSize: '2.5rem', marginBottom: '10px', color: '#fff' }}>About Me</h2>
-      <h3 style={{ fontSize: '1.5rem', color: '#f97316', marginBottom: '15px' }}>Shivansh Vasu (@theshivanshvasu)</h3>
-
+      <h3 style={{ fontSize: '1.5rem', color: '#f97316', marginBottom: '15px' }}>Karan Raj</h3>
       <p style={{ color: '#a1a1aa', fontSize: '1.2rem', lineHeight: '1.8', maxWidth: '600px', margin: '0 auto 30px auto' }}>
-        <strong>Join the community and grow together!</strong> Welcome to my platform where we build, deploy, and scale highly engineered systems.
+        <p>About ShopNest </p> 
+        <p>**ShopNest** is a full-stack e-commerce web application designed to provide a seamless and secure online shopping experience. It allows users to browse products, manage their shopping cart, place orders, and make online payments through an intuitive and responsive interface.</p>
+        <p>  The application is built using the **MERN stack**, with **React.js** and **Redux** for the frontend and state management, **Node.js** and **Express.js** for the backend, and **MongoDB** for database management. It also integrates **Razorpay** to support secure online payments.</p> 
+        <p>ShopNest includes user authentication, product management, cart functionality, order processing, payment integration, and an admin-oriented analytics system. The project demonstrates the development of a complete full-stack application, from designing the user interface to implementing REST APIs, database operations, authentication, and payment processing.</p>
       </p>
-
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px', marginTop: '20px' }}>
-        <a href="https://theshivanshvasu.com" target="_blank" rel="noreferrer" style={socialBtnStyle}>🌐 Website</a>
-        <a href="https://youtube.com/@shivanshvasu" target="_blank" rel="noreferrer" style={{ ...socialBtnStyle, background: 'rgba(239, 68, 68, 0.2)', borderColor: '#ef4444', color: '#ef4444' }}>📺 YouTube</a>
-        <a href="https://instagram.com/theshivanshvasuofficial" target="_blank" rel="noreferrer" style={{ ...socialBtnStyle, background: 'rgba(236, 72, 153, 0.2)', borderColor: '#ec4899', color: '#ec4899' }}>📸 Instagram</a>
-        <a href="https://www.linkedin.com/in/theshivanshvasu" target="_blank" rel="noreferrer" style={{ ...socialBtnStyle, background: 'rgba(59, 130, 246, 0.2)', borderColor: '#3b82f6', color: '#3b82f6' }}>💼 LinkedIn</a>
-        <a href="https://x.com/theshivanshvasu" target="_blank" rel="noreferrer" style={socialBtnStyle}>✖️ X (Twitter)</a>
-        <a href="https://whatsapp.com/channel/0029VbAWGE5ICVfcjjKTAS0B" target="_blank" rel="noreferrer" style={{ ...socialBtnStyle, background: 'rgba(16, 185, 129, 0.2)', borderColor: '#10b981', color: '#10b981' }}>💬 WhatsApp</a>
-        <a href="https://linktr.ee/shivanshvasu" target="_blank" rel="noreferrer" style={socialBtnStyle}>🔗 Linktree</a>
-      </div>
     </div>
   );
 };
