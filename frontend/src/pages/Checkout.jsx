@@ -43,7 +43,7 @@ const Checkout = () => {
         description: 'Test Transaction',
         order_id: orderData.id,
         handler: async function (response) {
-          const verifyRes = await fetch('`${import.meta.env.VITE_API_URL}/api/payment/verify', {
+          const verifyRes = await fetch(`${import.meta.env.VITE_API_URL}/api/payment/verify`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(response)
