@@ -100,7 +100,7 @@ const Checkout = () => {
   };
 
   const bypassPayment = async () => {
-    const saveOrderRes = await fetch('`${import.meta.env.VITE_API_URL}/api/orders', {
+    const saveOrderRes = await fetch(`${import.meta.env.VITE_API_URL}/api/orders`, {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',

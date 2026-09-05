@@ -8,7 +8,7 @@ const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
   try {
-    const res = await fetch('`${import.meta.env.VITE_API_URL}/api/products');
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/products`);
 
     console.log("Status:", res.status);
 
