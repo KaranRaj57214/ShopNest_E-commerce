@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { clearCart } from '../redux/cartSlice';
+import { clearCart } from '../redux/CartSlice';
 
 const Checkout = () => {
   const { user } = useContext(AuthContext);
