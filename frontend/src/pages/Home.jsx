@@ -7,22 +7,16 @@ const Home = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-  try {
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/products`);
-
-    console.log("Status:", res.status);
-
-    const data = await res.json();
-
-    console.log("Products:", data);
-
-    setProducts(data.slice(0, 4));
-  } catch (error) {
-    console.error("Error:", error);
-  } finally {
-    setLoading(false);
-  }
-};
+      try {
+        const res = await fetch('/api/products');
+        const data = await res.json();
+        setProducts(data.slice(0, 4)); // Featured products
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchProducts();
   }, []);
 

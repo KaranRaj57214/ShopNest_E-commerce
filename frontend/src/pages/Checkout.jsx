@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { clearCart } from '../redux/CartSlice';
+import { clearCart } from '../redux/cartSlice';
 
 const Checkout = () => {
   const { user } = useContext(AuthContext);
@@ -18,7 +18,7 @@ const Checkout = () => {
 
   const handlePayment = async () => {
     try {
-      const orderRes = await fetch(`${import.meta.env.VITE_API_URL}/api/payment/order`, {
+      const orderRes = await fetch('/api/payment/order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount: totalPrice })
@@ -36,31 +36,27 @@ const Checkout = () => {
       }
 
       const options = {
-        key: 'rzp_test_T9mLTaNoFgXnQw', // Student dummy fallback
+        key: 'rzp_test_dummykey123', // Student dummy fallback
         amount: orderData.amount,
         currency: orderData.currency,
         name: 'ShopNest',
         description: 'Test Transaction',
         order_id: orderData.id,
         handler: async function (response) {
-          const verifyRes = await fetch(`${import.meta.env.VITE_API_URL}/api/payment/verify`, {
+          const verifyRes = await fetch('/api/payment/verify', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(response)
           });
           if (verifyRes.ok) {
-            const saveOrderRes = await fetch(`${import.meta.env.VITE_API_URL}/api/orders`, {
+            const saveOrderRes = await fetch('/api/orders', {
               method: 'POST',
               headers: { 
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${user.token}`
               },
               body: JSON.stringify({
-                // items: cartItems,
-                    items: cartItems.map(item => ({
-                    productId: item._id,
-                    quantity: item.qty
-                })),
+                items: cartItems,
                 totalAmount: totalPrice,
                 address,
                 paymentId: response.razorpay_payment_id
@@ -73,11 +69,6 @@ const Checkout = () => {
             } else {
               alert('Order saving failed');
             }
-
-
-            dispatch(clearCart());
-            navigate('/ordersuccess');
-
           } else {
             alert('Payment verification failed');
           }
@@ -100,7 +91,7 @@ const Checkout = () => {
   };
 
   const bypassPayment = async () => {
-    const saveOrderRes = await fetch(`${import.meta.env.VITE_API_URL}/api/orders`, {
+    const saveOrderRes = await fetch('/api/orders', {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
