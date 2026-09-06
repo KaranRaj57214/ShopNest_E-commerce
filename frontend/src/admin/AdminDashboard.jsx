@@ -48,7 +48,7 @@ const AdminDashboard = () => {
   };
 
   const numberStyle = {
-    fontSize: '2.5rem',
+    fontSize: '1.8rem',
     fontWeight: '700',
     color: '#f97316'
   };

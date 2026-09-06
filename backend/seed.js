@@ -131,5 +131,4 @@ const seedData = async () => {
         process.exit(1);
     }
 };
-8
 seedData();
