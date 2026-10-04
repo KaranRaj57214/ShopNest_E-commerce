@@ -1,3 +1,5 @@
 admin email: admin@shopnest.com
 pass:123456
-https://shopnest1-tqks.onrender.com
+
+User : karan8799742199@gmail.com
+pass: 12345
