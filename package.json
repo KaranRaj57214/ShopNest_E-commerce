@@ -19,6 +19,7 @@
   "author": "karan raj",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^10.0.3"
+    "concurrently": "^10.0.3",
+    "resend": "^6.32.0"
   }
 }

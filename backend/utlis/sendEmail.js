@@ -1,29 +1,25 @@
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendEmail = async (to, subject, text) => {
     try {
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
-            },
+        console.log("Sending email through Resend...");
+
+        const { data, error } = await resend.emails.send({
+            from: "ShopNest <onboarding@resend.dev>",
+            to: [to],
+            subject: subject,
+            text: text
         });
 
-        console.log("Checking SMTP connection...");
-
-        await transporter.verify();
-
-        console.log("SMTP Connected");
-
-        await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-            to,
-            subject,
-            text,
-        });
+        if (error) {
+            console.error("Resend email error:", error);
+            throw new Error(error.message);
+        }
 
         console.log("Email sent successfully to:", to);
+        console.log("Resend Email ID:", data.id);
 
         return true;
 
@@ -37,47 +33,48 @@ module.exports = sendEmail;
 
 
 
+// const nodemailer = require("nodemailer");
 
-
-
-
-
-
-// const nodemailer = require('nodemailer');
-// const sendEmail =async(to,subject,text)=>{
-//     try{
-//         const transporter=nodemailer.createTransport({
-//             service:'Gmail',
-//             auth:{
-//                 user:process.env.EMAIL_USER,
-//                 pass:process.env.EMAIL_PASS
-//             }
+// const sendEmail = async (to, subject, text) => {
+//     try {
+//         const transporter = nodemailer.createTransport({
+//             service: "gmail",
+//             auth: {
+//                 user: process.env.EMAIL_USER,
+//                 pass: process.env.EMAIL_PASS,
+//             },
 //         });
-//         // const mailOption={
-//         //     from: process.env.EMAIL_USER,
-//         //     to,
-//         //     subject,
-//         //     text
-//         // };
-//         // await transporter.sendMail(mailOption);
 
-
-
+//         console.log("Checking SMTP connection...");
 
 //         await transporter.verify();
+
 //         console.log("SMTP Connected");
 
 //         await transporter.sendMail({
 //             from: process.env.EMAIL_USER,
 //             to,
 //             subject,
-//             text
+//             text,
 //         });
 
-//         console.log("Email sent successfully");
+//         console.log("Email sent successfully to:", to);
 
-//     }catch(error){
-//         console.log('Error sending email:',error);
+//         return true;
+
+//     } catch (error) {
+//         console.error("Error sending email:", error);
+//         throw error;
 //     }
 // };
+
 // module.exports = sendEmail;
+
+
+
+
+
+
+
+
+
