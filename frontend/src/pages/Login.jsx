@@ -32,10 +32,18 @@ const Login = () => {
   return (
     <div className="auth-container">
       <form onSubmit={handleSubmit} className="auth-form">
+        
         <h2>Login</h2>
         <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <button type="submit" className="btn">Login</button>
+
+        {/* Demo credentials section */}
+        <div className="demo-credentials">
+          <p><strong>Demo Login Credentials</strong></p>
+          <p>User ID: <strong>karan8799742199@gmail.com</strong></p>
+          <p>Password: <strong>12345</strong></p>
+        </div>
         <p>Don't have an account? <Link to="/register">Register</Link></p>
       </form>
     </div>
